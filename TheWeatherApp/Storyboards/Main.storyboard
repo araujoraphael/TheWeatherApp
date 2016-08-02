@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ppC-yG-Ypt">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Cities View Controller-->
+        <scene sceneID="iqK-rf-Dbo">
+            <objects>
+                <viewController id="ppC-yG-Ypt" customClass="SearchCitiesViewController" customModule="TheWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="80q-MZ-1nT"/>
+                        <viewControllerLayoutGuide type="bottom" id="H1m-Qk-99z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p99-VO-RU6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lm1-43-JAJ">
+                                <rect key="frame" x="0.0" y="-1" width="600" height="551"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ppC-yG-Ypt" id="cHo-ev-oGZ"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-Mn-RkS">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kV6-MZ-dUN"/>
+                                </constraints>
+                                <state key="normal" title="Buscar"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H1m-Qk-99z" firstAttribute="top" secondItem="2sg-Mn-RkS" secondAttribute="bottom" id="1TT-UX-Utt"/>
+                            <constraint firstItem="2sg-Mn-RkS" firstAttribute="leading" secondItem="p99-VO-RU6" secondAttribute="leading" id="84x-Pc-tpA"/>
+                            <constraint firstItem="2sg-Mn-RkS" firstAttribute="top" secondItem="Lm1-43-JAJ" secondAttribute="bottom" id="9xR-L0-kWx"/>
+                            <constraint firstAttribute="trailing" secondItem="Lm1-43-JAJ" secondAttribute="trailing" id="G9V-gi-S74"/>
+                            <constraint firstItem="Lm1-43-JAJ" firstAttribute="leading" secondItem="p99-VO-RU6" secondAttribute="leading" id="O7O-Uk-K8Z"/>
+                            <constraint firstAttribute="trailing" secondItem="2sg-Mn-RkS" secondAttribute="trailing" id="TfR-z4-aMy"/>
+                            <constraint firstItem="Lm1-43-JAJ" firstAttribute="top" secondItem="p99-VO-RU6" secondAttribute="topMargin" constant="-1" id="Y4D-cf-GaU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Lm1-43-JAJ" id="qNq-f7-9aC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWL-Fz-jRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="365"/>
+        </scene>
+    </scenes>
+</document>
