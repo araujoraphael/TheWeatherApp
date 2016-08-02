@@ -21,7 +21,7 @@ class Annotation: NSObject, MKAnnotation {
     }
 }
 
-class SearchCitiesViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var searchButton : UIButton!
     @IBOutlet weak var mapView:MKMapView!
     var locationManager = CLLocationManager()
