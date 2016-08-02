@@ -9,7 +9,20 @@
 import UIKit
 import MapKit
 
+class Annotation: NSObject, MKAnnotation {
+    let coordinate: CLLocationCoordinate2D
+    let title : String?
+    
+    init(title: String, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
+        
+        super.init()
+    }
+}
+
 class SearchCitiesViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet weak var searchButton : UIButton!
     @IBOutlet weak var mapView:MKMapView!
     var locationManager = CLLocationManager()
     let radius: CLLocationDistance = 5
@@ -21,6 +34,7 @@ class SearchCitiesViewController: UIViewController, MKMapViewDelegate, CLLocatio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestLocationAuthorization()
+        self.addMapTapGestureRecognizer()
         // Do any additional setup after loading the view.
     }
 
@@ -55,6 +69,18 @@ class SearchCitiesViewController: UIViewController, MKMapViewDelegate, CLLocatio
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    func addPin(gestureRecognizer: UIGestureRecognizer) {
+        if gestureRecognizer.state == .Began {
+            let touchedPoint = gestureRecognizer.locationInView(mapView)
+            let touchedCoordinate = self.mapView.convertPoint(touchedPoint, toCoordinateFromView: mapView)
+            let annotation = Annotation(title: "Nearby cities will be searched from here", coordinate: touchedCoordinate)
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotation(annotation)
+            self.searchButton.enabled = true
+            self.searchButton.backgroundColor = UIColor.searchButtonEnabledColor()
+        }
+    }
+    
     // MARK: - CLLocationManagerDelegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -72,5 +98,18 @@ class SearchCitiesViewController: UIViewController, MKMapViewDelegate, CLLocatio
         if status == .AuthorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    // MARK: Gestures Recognizers
+    
+    func addMapTapGestureRecognizer() {
+        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(addPin))
+        longTap.minimumPressDuration = 0.5;
+        self.mapView.addGestureRecognizer(longTap)
+    }
+    
+    // MARK: IBAction Methods
+    @IBAction func searchButtonTapped(sender : UIButton) {
+        //TODO: search cities by location
     }
 }

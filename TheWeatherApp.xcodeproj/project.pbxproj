@@ -13,6 +13,7 @@
 		BD1893DE1D4FB54A00535BD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD1893DD1D4FB54A00535BD4 /* Main.storyboard */; };
 		BD1893E01D4FB8F700535BD4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1893DF1D4FB8F700535BD4 /* MapKit.framework */; };
 		BD1893E31D4FBA6A00535BD4 /* SearchCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1893E21D4FBA6A00535BD4 /* SearchCitiesViewController.swift */; };
+		BD1893E61D50440B00535BD4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1893E51D50440B00535BD4 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BD1893DD1D4FB54A00535BD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
 		BD1893DF1D4FB8F700535BD4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BD1893E21D4FBA6A00535BD4 /* SearchCitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCitiesViewController.swift; path = ViewControllers/SearchCitiesViewController.swift; sourceTree = "<group>"; };
+		BD1893E51D50440B00535BD4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Utils/Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		BD1893C91D4FAF5500535BD4 /* TheWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				BD1893E41D5043CC00535BD4 /* Util */,
 				BD1893E11D4FBA3200535BD4 /* ViewControllers */,
 				BD1893DC1D4FB50700535BD4 /* Storyboards */,
 				BD1893CA1D4FAF5600535BD4 /* AppDelegate.swift */,
@@ -82,6 +85,14 @@
 				BD1893E21D4FBA6A00535BD4 /* SearchCitiesViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BD1893E41D5043CC00535BD4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BD1893E51D50440B00535BD4 /* Extension.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD1893E61D50440B00535BD4 /* Extension.swift in Sources */,
 				BD1893E31D4FBA6A00535BD4 /* SearchCitiesViewController.swift in Sources */,
 				BD1893CB1D4FAF5600535BD4 /* AppDelegate.swift in Sources */,
 			);
