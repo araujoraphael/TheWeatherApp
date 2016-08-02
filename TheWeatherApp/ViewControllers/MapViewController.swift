@@ -21,14 +21,14 @@ class Annotation: NSObject, MKAnnotation {
     }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, SearchCitiesDelegate {
     @IBOutlet weak var searchButton : UIButton!
     @IBOutlet weak var mapView:MKMapView!
     var locationManager = CLLocationManager()
     let radius: CLLocationDistance = 5
     var firstLocation = CLLocation(latitude: 17.2239783, longitude: -89.6508839)
     var isWaitingForUserLocation = true
-    
+    var searchViewController : SearchCitiesViewController!
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -110,6 +110,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: IBAction Methods
     @IBAction func searchButtonTapped(sender : UIButton) {
-        //TODO: search cities by location
+        self.searchViewController = SearchCitiesViewController()
+        self.addChildViewController(searchViewController)
+        self.view.addSubview(searchViewController.view)
+        searchViewController.didMoveToParentViewController(self)
+        searchViewController.delegate = self
+    }
+    
+    // MARK: SearchCities Delegate Methods
+    func maskViewTapped() {
+        self.searchViewController.removeFromParentViewController()
+        self.searchViewController.view.removeFromSuperview()
     }
 }

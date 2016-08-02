@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search Cities View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="iqK-rf-Dbo">
             <objects>
-                <viewController id="ppC-yG-Ypt" customClass="SearchCitiesViewController" customModule="TheWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ppC-yG-Ypt" customClass="MapViewController" customModule="TheWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="80q-MZ-1nT"/>
                         <viewControllerLayoutGuide type="bottom" id="H1m-Qk-99z"/>
