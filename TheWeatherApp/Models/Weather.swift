@@ -9,13 +9,15 @@
 import UIKit
 
 class Weather: NSObject {
-    let minTemp : Float!
-    let maxTemp : Float!
+    let minTemp : Int!
+    let maxTemp : Int!
+    let temp : Int!
     let weatherDescription : String!
     
-    init(minTemp: Float, maxTemp: Float, weatherDescription: String) {
+    init(minTemp: Int, maxTemp: Int, temp: Int, weatherDescription: String) {
         self.minTemp = minTemp
         self.maxTemp = maxTemp
+        self.temp = temp
         self.weatherDescription = weatherDescription
         
         super.init()
