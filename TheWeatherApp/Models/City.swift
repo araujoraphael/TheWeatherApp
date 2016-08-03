@@ -17,9 +17,9 @@ class City: NSObject {
     init(json: JSON) {
         name = json["name"].stringValue
         let mainJson = json["main"]
-        let weatherJson = json["weather"]
-        weather = Weather(minTemp: mainJson["temp_min"].floatValue,
-                          maxTemp: mainJson["temp_max"].floatValue,
+        let weatherJson = json["weather"].arrayValue[0]
+        weather = Weather(minTemp: mainJson["temp_min"].intValue,
+                          maxTemp: mainJson["temp_max"].intValue, temp: mainJson["temp"].intValue,
                           weatherDescription: weatherJson["description"].stringValue)
         super.init()
     }
