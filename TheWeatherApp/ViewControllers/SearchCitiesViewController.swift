@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SVProgressHUD
 @objc protocol SearchCitiesDelegate {
     optional func maskViewTapped()
 }
@@ -17,6 +18,8 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
     var maskView : UIView!
     var delegate : SearchCitiesDelegate?
     var coordinate : CLLocationCoordinate2D!
+    var cities = [City]()
+    var isLoadingData = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupMaskView()
@@ -25,13 +28,12 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: TableView DataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return cities.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,7 +42,8 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel!.text = "Cidade \(indexPath.row+1)"
+        let city = cities[indexPath.row]
+        cell.textLabel!.text = city.name!
         return cell
     }
     
@@ -50,7 +53,7 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
     func setupMaskView() {
         self.maskView = UIView(frame: self.view.frame)
         self.maskView.backgroundColor = UIColor.blackColor()
-        self.maskView.alpha = 0.5
+        self.maskView.alpha = 0.7
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(maskViewTapped))
         self.maskView.addGestureRecognizer(tapGesture)
         self.view.addSubview(self.maskView)
@@ -58,22 +61,39 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
     
     func setupTableView() {
         let viewFrame = self.view.frame
-        let tableViewFrame = CGRectMake(viewFrame.origin.x + 30, viewFrame.origin.y + 60, viewFrame.size.width - 60, viewFrame.size.height - 120)
+        let tableViewFrame = CGRectMake(viewFrame.origin.x + 30, viewFrame.origin.y + 68, viewFrame.size.width - 60, viewFrame.size.height - 140)
         self.tableView = UITableView(frame: tableViewFrame)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.hidden = true
         self.view.addSubview(self.tableView)
     }
     
     // MARK: Call Delegate Methods
     func maskViewTapped(gestureRecognizer : UIGestureRecognizer) {
-        self.delegate!.maskViewTapped!()
+        if(isLoadingData == false) {
+            self.delegate!.maskViewTapped!()
+        }
     }
     
     func loadData() {
-        
+        if(self.tableView != nil) {
+            self.tableView.hidden = true
+            self.cities.removeAll()
+            self.tableView.reloadData()
+        }
+        isLoadingData = true
+        SVProgressHUD.showWithStatus("Finding nearby cities...")
+        City.getNearbyCities(self.coordinate.latitude, log: self.coordinate.longitude, cnt: 15) { (response) in
+            if(response.count > 0) {
+                self.cities = response
+                self.tableView.reloadData()
+                self.tableView.hidden = false
+            }
+            self.isLoadingData = false
+            SVProgressHUD.dismiss()
+        }
     }
-
 }

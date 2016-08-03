@@ -38,5 +38,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Para buscar as cidades próximas, necessitamos sua autorização para acessar os serviços de localização</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

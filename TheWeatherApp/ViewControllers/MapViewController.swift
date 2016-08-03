@@ -29,6 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var firstLocation = CLLocation(latitude: 17.2239783, longitude: -89.6508839)
     var isWaitingForUserLocation = true
     var searchViewController : SearchCitiesViewController!
+    var currentAnnotation : Annotation!
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -76,6 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let annotation = Annotation(title: "Nearby cities will be searched from here", coordinate: touchedCoordinate)
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotation(annotation)
+            self.currentAnnotation = annotation
             self.searchButton.enabled = true
             self.searchButton.backgroundColor = UIColor.searchButtonEnabledColor()
         }
@@ -86,7 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         
         if isWaitingForUserLocation {
             self.mapView.setRegion(region, animated: true)
@@ -110,7 +112,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: IBAction Methods
     @IBAction func searchButtonTapped(sender : UIButton) {
-        self.searchViewController = SearchCitiesViewController()
+        if(self.searchViewController == nil) {
+            self.searchViewController = SearchCitiesViewController()
+        }
+        searchViewController.coordinate = self.currentAnnotation.coordinate
+        self.searchViewController.loadData()
         self.addChildViewController(searchViewController)
         self.view.addSubview(searchViewController.view)
         searchViewController.didMoveToParentViewController(self)
