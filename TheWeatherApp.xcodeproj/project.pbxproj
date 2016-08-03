@@ -18,6 +18,7 @@
 		BD1893E01D4FB8F700535BD4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1893DF1D4FB8F700535BD4 /* MapKit.framework */; };
 		BD1893E31D4FBA6A00535BD4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1893E21D4FBA6A00535BD4 /* MapViewController.swift */; };
 		BD1893E61D50440B00535BD4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1893E51D50440B00535BD4 /* Extension.swift */; };
+		BD2ABE241D52660200F46AAB /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2ABE231D52660200F46AAB /* CityDetailViewController.swift */; };
 		FA65B48246D3433CA8EEB193 /* Pods_TheWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AECD3587DFF62A2605DC62 /* Pods_TheWeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		BD1893DF1D4FB8F700535BD4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BD1893E21D4FBA6A00535BD4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ViewControllers/MapViewController.swift; sourceTree = "<group>"; };
 		BD1893E51D50440B00535BD4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Utils/Extension.swift; sourceTree = "<group>"; };
+		BD2ABE231D52660200F46AAB /* CityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityDetailViewController.swift; path = ViewControllers/CityDetailViewController.swift; sourceTree = "<group>"; };
 		E1F7507ABB27240C5723BFDB /* Pods-TheWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheWeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheWeatherApp/Pods-TheWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 			children = (
 				BD1893E21D4FBA6A00535BD4 /* MapViewController.swift */,
 				BD0004181D51157400E1CCA6 /* SearchCitiesViewController.swift */,
+				BD2ABE231D52660200F46AAB /* CityDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				BD1893E61D50440B00535BD4 /* Extension.swift in Sources */,
 				BD07A6311D515EDB009EBC22 /* City.swift in Sources */,
 				BD1893E31D4FBA6A00535BD4 /* MapViewController.swift in Sources */,
+				BD2ABE241D52660200F46AAB /* CityDetailViewController.swift in Sources */,
 				BD0004191D51157400E1CCA6 /* SearchCitiesViewController.swift in Sources */,
 				BD07A6331D515EEB009EBC22 /* Weather.swift in Sources */,
 				BD1893CB1D4FAF5600535BD4 /* AppDelegate.swift in Sources */,

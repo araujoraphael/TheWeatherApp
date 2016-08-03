@@ -25,8 +25,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var searchButton : UIButton!
     @IBOutlet weak var mapView:MKMapView!
     var locationManager = CLLocationManager()
-    let radius: CLLocationDistance = 5
-    var firstLocation = CLLocation(latitude: 17.2239783, longitude: -89.6508839)
+    let radius: CLLocationDistance = 25000
+    var firstLocation = CLLocation(latitude: -8.0628536, longitude: -34.8715468)
     var isWaitingForUserLocation = true
     var searchViewController : SearchCitiesViewController!
     var currentAnnotation : Annotation!

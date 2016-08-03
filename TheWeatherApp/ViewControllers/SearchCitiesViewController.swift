@@ -48,6 +48,16 @@ class SearchCitiesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: TableView Delegate Methods
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let city = self.cities[indexPath.row]
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let cityDetailVC = mainStoryBoard.instantiateViewControllerWithIdentifier("CityDetailViewController") as! CityDetailViewController
+        
+        cityDetailVC.city = city
+        self.presentViewController(cityDetailVC, animated: true, completion: nil)
+    }
     // MARK: - Setups
     
     func setupMaskView() {
