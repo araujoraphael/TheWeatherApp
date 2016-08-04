@@ -9,3 +9,9 @@ target 'TheWeatherApp' do
 	pod 'SVProgressHUD', '~> 2.0.3'
 end
 
+
+target 'TheWeatherAppTests' do
+	pod 'SwiftyJSON', '~> 2.3.2'
+end
+
+link_with 'TheWeatherApp', 'TheWeatherAppTests'

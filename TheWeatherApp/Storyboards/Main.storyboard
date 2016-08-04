@@ -9,7 +9,7 @@
         <!--Map View Controller-->
         <scene sceneID="iqK-rf-Dbo">
             <objects>
-                <viewController id="ppC-yG-Ypt" customClass="MapViewController" customModule="TheWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="ppC-yG-Ypt" customClass="MapViewController" customModule="TheWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="80q-MZ-1nT"/>
                         <viewControllerLayoutGuide type="bottom" id="H1m-Qk-99z"/>
