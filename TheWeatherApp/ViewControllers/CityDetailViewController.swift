@@ -20,9 +20,9 @@ class CityDetailViewController: UIViewController {
         super.viewDidLoad()
         self.cityNameLabel.text = city!.name
         self.weatherDescriptionLabel.text = city!.weather!.weatherDescription
-        self.minTempLabel.text = "\(city!.weather!.minTemp)"
-        self.maxTempLabel.text = "\(city!.weather!.maxTemp)"
-        self.tempLabel.text = "\(city!.weather!.temp)"
+        self.minTempLabel.text = "\(city!.weather!.minTemp)ºC"
+        self.maxTempLabel.text = "\(city!.weather!.maxTemp)ºC"
+        self.tempLabel.text = "\(city!.weather!.temp)ºC"
         // Do any additional setup after loading the view.
     }
 
